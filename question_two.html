@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Question 2:</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+  	function getSmallestNumber() {
+  		var val = document.getElementById('numbers').value;
+  		val = val.replace(/\s+/g, '');
+  		var numbers = val.split(",");
+  		setInnerHTML('inputNmberLength', numbers.length);
+  		var startTimeSN = new Date().getTime();
+  		findSmallestNumber.apply(null, numbers);
+  		var stopTimeSN = new Date().getTime();
+  		setInnerHTML('totalTimeSN', (stopTimeSN - startTimeSN));
+  		var startTimeSN = new Date().getTime();
+  		javascriptSortFunction(numbers);
+  		var stopTimeSN = new Date().getTime();
+  		setInnerHTML('totalTimeSort', (stopTimeSN - startTimeSN));
+  	}
+
+  	function findSmallestNumber() {
+		var argLength = arguments.length;
+		var smallestNum = smallestNumber(Array.prototype.slice.call(arguments), argLength);
+		setInnerHTML('resultSN', smallestNum[0]);
+	}
+	//findSmallestNumber(1,2,3);
+
+	function smallestNumber(numbers, numLength){
+		if(numLength == 1) {
+			return [numbers[0]];
+		} else if(numLength == 2) {
+			return numbers[0] > numbers[1] ? [numbers[1]] : [numbers[0]];
+		} else {
+			var Index = Math.ceil(numLength/2)
+			var leftArray = numbers.slice(0, Index);;
+			var rightArray = numbers.slice(Index, numLength);
+			var leftResult = smallestNumber(leftArray, leftArray.length);
+			var rightResult = smallestNumber(rightArray, rightArray.length);
+			var finalResult = leftResult.concat(rightResult);
+			return smallestNumber(finalResult, finalResult.length);
+		}
+	}
+
+	function javascriptSortFunction(numbers) {
+		var result = numbers.sort(function(a, b){ return a-b})[0];
+		setInnerHTML('resultSort', result);
+	}
+
+	function setInnerHTML(id, val) {
+		document.getElementById(id).innerHTML = val;
+	}
+  </script>
+</head>
+<body>
+
+<div class="container-fluid">
+  	<h3>Question 2:</h3>
+  	<blockquote>Create a function that can find the Nth smallest number in an array. The array can be very very big, so you are not allowed using the Array.sort() method. Try to build a function that would perform fast. Also, explain why using Array.sort() isn't a good idea when sorting large arrays.</blockquote>
+	<div class="form-group">
+ 		<label for="numbers">Numbers:</label>
+  		<input type="text" class="form-control" value="1,2,3" id="numbers">
+  		<button type="button" class="btn btn-success" onclick="getSmallestNumber()">Submit</button>
+  	</div>
+	<table class="table table-bordered">
+		<thead>
+	      <tr>
+	        <th></th>
+	        <th>smallestNumber()</th>
+	        <th>sort()</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	      <tr>
+	        <td>Numbers</td>
+	        <td id="inputNmberLength" colspan="2">0</td>
+	      </tr>
+	      <tr>
+	      	<td>Total Time</td>
+	      	<td id="totalTimeSN">0</td>
+	        <td id="totalTimeSort">0</td>
+	      </tr>
+	      <tr>
+	      	<td>Result</td>
+	      	<td id="resultSN">0</td>
+	        <td id="resultSort">0</td>
+	      </tr>
+	    </tbody>
+	</table>
+</div>
+
+</body>
+</html>
