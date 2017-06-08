@@ -7,49 +7,52 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="selectionsort.js"></script>
+  <script src="mergesort.js"></script>
+  <script src="heapsort.js"></script>
   <script type="text/javascript">
-  	function getSmallestNumber() {
+  	function getSmallestNthNumber() {
   		var val = document.getElementById('numbers').value;
+  		val = val.replace(/\s/g, '');
   		var numbers = val.split(",");
+  		numbers = numbers.map(function(item) {
+		    return parseInt(item, 10);
+		});
   		setInnerHTML('inputNmberLength', numbers.length);
 
-  		var startTimeSN = new Date().getTime();
-  		findSmallestNumber.apply(null, numbers);
-  		var stopTimeSN = new Date().getTime();
-  		setInnerHTML('totalTimeSN', (stopTimeSN - startTimeSN) + 'ms');
+  		var nth = document.getElementById('nth').value;
+  		setInnerHTML('selectedNth', nth);
 
+  		if(numbers.length < nth) {
+  			alert("Incorrect input!");
+			return 1;
+  		}
+  		
+  		var smallestNum = getMergeSort.apply(null, numbers);
+  		setInnerHTML('resultMS', smallestNum[nth-1]);
+  		
   		var startTimeSN = new Date().getTime();
-  		javascriptSortFunction(numbers);
+  		var resultSS = selectionSort(numbers, nth);
   		var stopTimeSN = new Date().getTime();
-  		setInnerHTML('totalTimeSort', (stopTimeSN - startTimeSN) + 'ms');
+  		setInnerHTML('resultSS', resultSS);
+  		setInnerHTML('totalTimeSS', (stopTimeSN - startTimeSN) + 'ms');
+
+  		var startTimeHS = new Date().getTime();
+  		var resultSS = heapSort(numbers);
+  		var stopTimeHS = new Date().getTime();
+  		setInnerHTML('resultHS', resultSS[nth-1]);
+  		setInnerHTML('totalTimeHS', (stopTimeHS - startTimeHS) + 'ms');
   	}
 
-  	function findSmallestNumber() {
-		var argLength = arguments.length;
-		var inputNumbers = Array.prototype.slice.call(arguments);
-		var smallestNum = smallestNumber(Array.prototype.slice.call(arguments), argLength);
-		setInnerHTML('resultSN', smallestNum[0]);
-	}
-
-	function smallestNumber(numbers, numLength){
-		if(numLength == 1) {
-			return [numbers[0]];
-		} else if(numLength == 2) {
-			return parseInt(numbers[0]) > parseInt(numbers[1]) ? [numbers[1]] : [numbers[0]];
-		} else {
-			var Index = Math.ceil(numLength/2)
-			var leftArray = numbers.slice(0, Index);;
-			var rightArray = numbers.slice(Index, numLength);
-			var leftResult = smallestNumber(leftArray, leftArray.length);
-			var rightResult = smallestNumber(rightArray, rightArray.length);
-			var finalResult = leftResult.concat(rightResult);
-			return smallestNumber(finalResult, finalResult.length);
-		}
-	}
-
-	function javascriptSortFunction(numbers) {
-		var result = numbers.sort(function(a, b){ return a-b})[0];
-		setInnerHTML('resultSort', result);
+  	function getMergeSort() {
+  		var nums = Array.prototype.slice.call(arguments);
+  		var startTimeSN = new Date().getTime();
+  		var result = mergeSort(nums);
+		var stopTimeSN = new Date().getTime();
+		//console.log("Merge Sort: ");
+		//console.log(result);
+  		setInnerHTML('totalTimeMS', (stopTimeSN - startTimeSN) + 'ms');
+		return result;
 	}
 
 	function setTestData() {
@@ -69,36 +72,47 @@
   	<blockquote>Create a function that can find the Nth smallest number in an array. The array can be very very big, so you are not allowed using the Array.sort() method. Try to build a function that would perform fast. Also, explain why using Array.sort() isn't a good idea when sorting large arrays.</blockquote><br /><br />
   	<blockquote>
   		Why we can use Array.sort() for long array? <br/>
-  		<strong>Answer: </strong> Array.sort() function compare each value with next value and do the sorting. Which is very costly in terms of performance. With big array consume more memory and function require more computational power to comare all values to sorting. I compared Array.sort() and my getSmallestNumber() to get the smallest number from large array. You can compare the total time taken by each function.
+  		<strong>Answer: </strong> Array.sort() function compares each value with next value and do the sorting. Which is very costly in terms of performance. A big array consumes more memory and function require more computational power to compare all values to sorting. I compared few algorithms <i><strong>selection sort, merge sort, and heap sort</strong></i>. Heap sort has lowest complexity and it's best for the given problem. Selection sort also performing well when we have nth number very small( may be between 1 to 15).
+  		<br/><br/>
+  		I tested all three algorithm with same test data, If my nth value is near to 10 then <strong>Selection sort</strong> is the best solution. For any other nth value I would prefer to go with <strong>heap sort</strong>.
   	</blockquote>
-  	<button class="btn btn-success" onclick="setTestData()">Load 10,000 random integer test data. (Answer: 1067)</button>
+  	<button class="btn btn-success" onclick="setTestData()">Load 10,000 random integer test data.</button>
 	<div class="form-group">
  		<label for="numbers">Numbers:</label>
   		<input type="text" class="form-control" value="1,2,3" id="numbers">
-  		<button type="button" class="btn btn-success" onclick="getSmallestNumber()">Submit</button>
+  		<label for="numbers">Enter Nth Number:</label>
+  		<input type="text" class="form-control" value="1" id="nth">
+  		<button type="button" class="btn btn-success" onclick="getSmallestNthNumber()">Submit</button>
   	</div>
 	<table class="table table-bordered">
 		<thead>
 	      <tr>
 	        <th></th>
-	        <th>smallestNumber()</th>
-	        <th>sort()</th>
+	        <th>mergeSort()</th>
+	        <th>selectionSort()</th>
+	        <th>heapsort()</th>
 	      </tr>
 	    </thead>
 	    <tbody>
 	      <tr>
 	        <td>Numbers</td>
-	        <td id="inputNmberLength" colspan="2">0</td>
+	        <td id="inputNmberLength" colspan="3">0</td>
+	      </tr>
+	      <tr>
+	        <td>Selected Nth</td>
+	        <td id="selectedNth" colspan="3">0</td>
 	      </tr>
 	      <tr>
 	      	<td>Total Time</td>
-	      	<td id="totalTimeSN">0</td>
-	        <td id="totalTimeSort">0</td>
+	      	<td id="totalTimeMS">0</td>
+	        <td id="totalTimeSS">0</td>
+	        <td id="totalTimeHS">0</td>
 	      </tr>
 	      <tr>
 	      	<td>Result</td>
-	      	<td id="resultSN">0</td>
-	        <td id="resultSort">0</td>
+	      	<td id="resultMS">0</td>
+	        <td id="resultSS">0</td>
+	        <td id="resultHS">0</td>
 	      </tr>
 	    </tbody>
 	</table>
