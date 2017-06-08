@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Question 1:</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+  	function submitAction() {
+  		var val = document.getElementById('numbers').value;
+  		val = val.replace(/\s+/g, '');
+  		var numbers = val.split(",");
+
+  		var startTimeSN = new Date().getTime();
+  		var result = getPermute.apply(null, numbers);;
+  		var stopTimeSN = new Date().getTime();
+  		setInnerHTML('totalTime', (stopTimeSN - startTimeSN) + 'ms');
+  		setInnerHTML('resultCount', result.length);
+  		setInnerHTML('result', JSON.stringify(result));
+  	}
+  	function getPermute() {
+		var inputArr = Array.prototype.slice.call(arguments);
+	  	var results = [];
+
+		function permute(input, data) {
+		    var cur, data = data || [];
+		    for (var i = 0; i < input.length; i++) {
+		      cur = input.splice(i, 1);
+
+		      if (input.length === 0) 
+		        results.push(data.concat(cur).join(''));
+		      
+		      permute(input.slice(), data.concat(cur));
+		      input.splice(i, 0, cur[0]);
+		    }
+		    return results;
+		}
+
+	  	return permute(inputArr);
+	}
+
+	function setInnerHTML(id, val) {
+		document.getElementById(id).innerHTML = val;
+	}
+
+	$( document ).ready(function() {
+	    submitAction();
+	});
+  </script>
+</head>
+<body>
+
+<div class="container-fluid">
+  	<h3>Question 1:</h3>
+  	<blockquote>Create a function that takes an unlimited amount of number parameters, and returns an array of all the permutations possible. For example, myFunction(4, 7, 2) {} should return [472, 427, 724, 742, 247, 274].</blockquote>
+	<div class="form-group">
+ 		<label for="numbers">Numbers:</label>
+  		<input type="text" class="form-control" value="4, 7, 2" id="numbers">
+  		<button type="button" class="btn btn-success" onclick="submitAction()">Submit</button>
+  	</div>
+	<table class="table table-bordered">
+		<thead>
+	      <tr>
+	        <th></th>
+	        <th>getPermute()</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	      <tr>
+	      	<td>Total Time</td>
+	      	<td id="totalTime">0</td>
+	      </tr>
+	      <tr>
+	      	<td>Possible Permutations(count):</td>
+	      	<td id="resultCount">0</td>
+	      </tr>
+	      <tr>
+	      	<td>Possible Permutations:</td>
+	      	<td id="result" style="max-width: 1000px;word-wrap: break-word;">0</td>
+	      </tr>
+	    </tbody>
+	</table>
+</div>
+</body>
+</html>
