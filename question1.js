@@ -16,7 +16,7 @@ const permutator = (...numbers) => {
     }
 
     // The final array of all permutations or the error string.
-    let permutations = (are_numbers_valid) ? [] : "This function only takes numbers higher than 0 as parameters.";
+    let permutations = (are_numbers_valid && numbers.length > 1) ? [] : "This function takes at least two numbers higher than 0 as parameters.";
 
     if (are_numbers_valid) {
 
@@ -55,6 +55,7 @@ const permutator = (...numbers) => {
     return permutations;
 }
 
+console.log(permutator(4));
 console.log(permutator(4, -1, 2));
 console.log(permutator(4, "some wrong parameter", 2));
 console.log(permutator(4, 7, 2));
