@@ -1,7 +1,7 @@
 /**
  * The main permutation function.
  * @param {array} numbers The unlimited quantity of parameters, as numbers
- * @return {array} The final array of permutations
+ * @return {array||string} The final array of permutations or an error string
  */
 const permutator = (...numbers) => {
 
