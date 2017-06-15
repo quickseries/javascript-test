@@ -1,5 +1,9 @@
 /**
  * Gets the nth smallest number in an array of numbers.
+ * 
+ * Using Array.sort is not a very good idea here because it will loop through all the array at every single
+ *  iteration, which could lead to performance issue with huge arrays.
+ * 
  * @param {array} numbers The array of numbers to get the nth smallest number of
  * @param {number} position The "n" value
  */
@@ -54,4 +58,4 @@ const getNthSmallestNumber = (numbers, position) => {
     return result;
 }
 
-console.log(getNthSmallestNumber([4, -1, 2, 5, -3, -7, 39, 123, 72, 582, 38], 5));
+console.log(getNthSmallestNumber([4, -1, 2, 5, -3, -7, 39, 123, 72, 582, 38], 7));
