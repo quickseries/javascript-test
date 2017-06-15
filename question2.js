@@ -31,8 +31,8 @@ const getNthSmallestNumber = (numbers, position) => {
         /**
          * Function that recursively gets the smallest number by removing the smallest number at 
          *  every iteration until arriving at the nth iteration (position).
-         * @param {*} numbers The array of numbers to get the smallest number from
-         * @param {*} nb_iterations The number of iterations we went through the array.
+         * @param {array} numbers The array of numbers to get the smallest number from
+         * @param {number} nb_iterations The number of iterations we went through the array.
          */
         const getSmallestNumber = (numbers, nb_iterations = 0) => {
 
