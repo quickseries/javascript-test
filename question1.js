@@ -15,7 +15,7 @@ const permutator = (...numbers) => {
         }
     }
 
-    // The final array of all permutations.
+    // The final array of all permutations or the error string.
     let permutations = (are_numbers_valid) ? [] : "This function only takes numbers higher than 0 as parameters.";
 
     if (are_numbers_valid) {
