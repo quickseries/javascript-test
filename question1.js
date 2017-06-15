@@ -5,7 +5,8 @@
  */
 const permutator = (...numbers) => {
 
-    let are_numbers_valid = true;
+    // Check if the numbers array contains at least one item
+    let are_numbers_valid = numbers.length > 0;
 
     // Checks if every parameter is a number and is higher than 0 (we don't want negative numbers)
     for (let number of numbers) {
@@ -16,7 +17,7 @@ const permutator = (...numbers) => {
     }
 
     // The final array of all permutations or the error string.
-    let permutations = (are_numbers_valid && numbers.length > 1) ? [] : "This function takes at least two numbers higher than 0 as parameters.";
+    let permutations = (are_numbers_valid) ? [] : "This function takes at least one number higher than 0 as parameters.";
 
     if (are_numbers_valid) {
 
