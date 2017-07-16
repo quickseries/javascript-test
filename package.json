@@ -1,0 +1,30 @@
+{
+  "name": "javascript-test",
+  "version": "1.0.0",
+  "description": "1. Fork this repo to your work station.\r 2. Answer the following questions by creating a JavaScript file for each of the questions.\r 3. Commit and push your code to your fork.\r 4. Create a pull request back to the master branch of the origin repo.",
+  "main": "index.js",
+  "scripts": {
+    "test": "karma start karma.conf.js --single-run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/slimovic/javascript-test.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/slimovic/javascript-test/issues"
+  },
+  "homepage": "https://github.com/slimovic/javascript-test#readme",
+  "dependencies": {
+    "jasmine-core": "^2.6.4",
+    "karma": "^1.7.0",
+    "karma-cli": "^1.0.1",
+    "karma-jasmine": "^1.1.0",
+    "karma-phantomjs-launcher": "^1.0.4",
+    "phantomjs-prebuilt": "^2.1.14"
+  },
+  "devDependencies": {
+    "karma-phantomjs-launcher": "^1.0.4"
+  }
+}
