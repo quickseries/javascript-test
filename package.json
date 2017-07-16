@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/slimovic/javascript-test#readme",
   "dependencies": {
+    "babel-polyfill": "^6.23.0",
     "jasmine-core": "^2.6.4",
     "karma": "^1.7.0",
     "karma-cli": "^1.0.1",
