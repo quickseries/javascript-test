@@ -16,36 +16,40 @@ function nthSmallestNumber(array, n) {
         return "Out of range!";
     }
     else {
-        var sortedArray = quickSort(array, 0, array.length - 1);
-        return array[n - 1];
+       var result =  selection(array.slice(), n, 0, array.length - 1);
+        return result;
     }
 }
 
 
 /**
- * @method quickSort
+ * @method selection
  * @param {number []} array
+ * @param {number} n
  * @param {number} low
  * @param {number} high
- * @description Quick Sort algorithm to place the elements of an array in order, source: https://en.wikipedia.org/wiki/Quicksort
+ * @description Selection algorithm based on quick sort: https://en.wikipedia.org/wiki/Quicksort, en consequence the final result is not sorted, it sort just the range where the nth is localed
  * @returns {Array}
  */
-function quickSort(array, low, high) {
+function selection(array, n, low, high) {
     var newPartition;
-    if (low < high) {
-        newPartition = partition(array, low, high);
+    
+    newPartition = partition(array, low, high);
 
-        //sort left and right
-        quickSort(array, low, newPartition - 1);
-        quickSort(array, newPartition + 1, high);
+    if (newPartition === n) {
+      return array[newPartition];
+    } 
+    else if (newPartition < n) {
+        return  selection(array, n, newPartition + 1, high);
+    } else {
+       return  selection(array, n, low, newPartition - 1);
     }
-    return array;
 }
 
 
 /**
- * @method quickSort
- * @memberof quickSort
+ * @method partition
+ * @memberof selection
  * @param {number []} array
  * @param {number} low
  * @param {number} high

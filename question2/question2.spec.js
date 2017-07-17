@@ -2,7 +2,7 @@ describe('nthSmallestNumber use cases', function() {
     var array = [5, 2, 7, 1];
 
     it("accepts an array and a position and returns the value", function() {
-        var n = 3;
+        var n = 2;
         var result = nthSmallestNumber(array, n);
         expect(result).toEqual(5);
     });
@@ -33,12 +33,8 @@ describe('nthSmallestNumber use cases', function() {
 
 });
 
-describe('quickSort use cases', function() {
-    it("sort correctly", function() {
-        var notSortedArray = [5, 6, 1, 2];
-        var result = quickSort(notSortedArray, 0, notSortedArray.length - 1);
-        expect(result).toEqual([1, 2, 5, 6]);
-    });
+describe('selection use cases', function() {
+   
 
     //Test the performance 
     var array = [];
@@ -59,14 +55,15 @@ describe('quickSort use cases', function() {
             return Promise.resolve(t1 - t0);
         }
 
-        var executeQuickSort = function() {
+        var executeSelection = function() {
             //Make a copy
-            quickSort(array.slice(), 0, arrayLength - 1);
+            return selection(array.slice(), 1000, 0, array.length - 1);
         }
 
         var executeNativeSort = function() {
             //Make a copy
-            array.slice().sort();
+            var result = array.slice().sort();
+            return result[1000];
         }
 
         executionTime(executeNativeSort).then(function(result) {
@@ -74,8 +71,8 @@ describe('quickSort use cases', function() {
                 return result;
             })
             .then(function(nativeSortTime) {
-                executionTime(executeQuickSort).then(function(result) {
-                    console.log("Quick Sort execution time is: ", result);
+                executionTime(executeSelection).then(function(result) {
+                    console.log("executeSelection execution time is: ", result);
                     expect(result).toBeLessThan(nativeSortTime);
                 });
             })
