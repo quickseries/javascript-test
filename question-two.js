@@ -1,10 +1,10 @@
 var findSmallest = {
     /**
-     * My custom method sorts the array from smallest to biggest.
-     * Array.sort is not a good idea first of all:
-     * - works really well for string sorting but not when sorting numbers.
-     * - In order to use array.sort for number you must pass in a compareFunction
-     * as parameter to the sort.
+     * Array.sort()
+     * ------------
+     * The sorting order is by default lexicographic and not numeric regardless of the 
+     * types of values in the array. Even if the array is all numbers, 
+     * all values will be converted to string and sorted which first slows down the computation
      */
 
     /**
@@ -41,5 +41,5 @@ var findSmallest = {
     }
 }
 
-var result = findSmallest.init([7, 10, 4, 3, 20, 15], 6);
+var result = findSmallest.init([7, 10, 4, 3, 20, 15], 2);
 console.log('results', result);
