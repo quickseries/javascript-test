@@ -7,6 +7,10 @@ var findSmallest = {
      * as parameter to the sort.
      */
 
+    /**
+     * SORRY ABOUT MISREADING THE QUESTION
+     */
+
     sortArray: function(array) {
         for (var i = 0; i < array.length; i++) {
             for (var j = 0; j < array.length; j++) {
@@ -19,18 +23,23 @@ var findSmallest = {
         }
         return array;
     },
-    init: function(array) {
+    init: function(array, n) {
 
         if (!array || array.length === 0) {
             console.log('no params provided');
             return;
         }
 
-        var result = this.sortArray(array)[0];
+        if (array.length < n) {
+            console.log('n is too big');
+            return;
+        }
+
+        var result = this.sortArray(array)[n - 1];
         //console.log('results', result)
         return result;
     }
 }
 
-var result = findSmallest.init([3, 1, 5, 0, -1, 4, 5, 6, 7, 8, 9, 0, 12, 13, 14, 15, 156]);
+var result = findSmallest.init([7, 10, 4, 3, 20, 15], 6);
 console.log('results', result);
