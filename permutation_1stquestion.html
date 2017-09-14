@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>Permutations_First_Program</h1>
+<script>
+var permArr = [],
+   usedChars = [],
+   finalArray = [],
+   permutedResultArr = [];
+function permutation(array) {
+  var i, ch,input=[]
+  input = array.length > 0 && array || (array.length==undefined) && Array.prototype.slice.call(arguments);
+  for (i = 0; i < input.length; i++) {
+    ch = input.splice(i, 1)[0];
+    usedChars.push(ch);
+    if (input.length == 0) {
+      permArr.push(usedChars.slice());
+    }
+    permutation(input);
+    input.splice(i, 0, ch);
+    usedChars.pop();
+  }
+  return permArr;
+};
+ permutedResultArr = permutation([4,7,2]);
+for(var i = 0;i < permutedResultArr.length;i++){
+   var number = permutedResultArr[i].toString().replace(/,/g,'');
+   finalArray.push(number);
+}
+document.write("Final ouput for the input &nbsp[4,7,2] is : &nbsp &nbsp &nbsp",finalArray)
+</script>
+</body>
+</html>

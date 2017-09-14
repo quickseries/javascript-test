@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>Nth_Smallest_Number_2nd_Program</h1>
+<script>
+function mergeSort(arr)
+{
+    if (arr.length < 2)
+        return arr;
+    var middle = parseInt(arr.length / 2);
+    var left   = arr.slice(0, middle);
+    var right  = arr.slice(middle, arr.length);
+    return merge(mergeSort(left), mergeSort(right));
+}
+function merge(left, right)
+{
+    var result = [];
+    while (left.length && right.length)
+	{
+        if (left[0] <= right[0]) {
+            result.push(left.shift());
+        } else {
+            result.push(right.shift());
+        }
+    }
+    while (left.length)
+        result.push(left.shift());
+    while (right.length)
+        result.push(right.shift());
+     return result;
+}
+function nthSmallestNumber(a,n){
+	document.write("Given input is an array [34, 203, 3, 746, 200, 984, 198, 764, 9] <br><br>");
+   document.write("Output of Nth(5th) smallest Number : " + mergeSort(a)[n-1]);
+}
+var list = [34, 203, 3, 746, 200, 984, 198, 764, 9];
+nthSmallestNumber(list,5);
+</script>
+</body>
+</html>
