@@ -1,22 +1,13 @@
-# IMPORTANT
+# Question 1
 
-NO PLAGIARISM WILL BE TOLERATED. We run every test through our plagiarism tool and you will be removed from the list of potential candidates if we find that you have copy pasted code from the web.
+The idea behind this solution, is to take any random element *n* from the array and withdraw this element from the prior array while it's not empty.  When this array is empty, we are done, and we add the *composite* number to an array were it doesn't exists.  We add permutations to `permutations`'s array until we got the number of permutations possibilities (`n!`, were `n` is the count of possibles symbols).
 
-We believe that most people are honest, professional individuals, and we wish to provide candidates a familiar, and stress-free environment to do the test in.
+# Question 2
 
-We also believe that you should have access to the internet for this test, as in real life, you will sometimes have no choice but to refer to the internet in order to solve a complex problem.
+For the second question, I used an algorithm to test each element of an array against `sm` which is set to `MAX_SAFE_INTEGER` initialy.  After each iteration, the `pivot` is set to `sm` to find the `nth` smallest number.
 
-Feel free to research ways to solve the two questions in this test, but try to be different and innovative when creating a solution. DO NOT PLARIARIZE.
+This is not an optimal solution.  The optimal solution is to use a *QuickSort* implementation and pick the `nth-1` element of the sorted array.  Unfortunately, providing a *QuickSort* implementation could lead to a kind of plagiarism, since it's a well known algorithm.
 
-# Instructions
+My implementation took 1.619ms to execute, while the QuickSort implementation took 0.146 with the same input data.
 
-1. Fork this repo to your work station.
-2. Answer the following questions by creating a JavaScript file for each of the questions.
-3. Commit and push your code to your fork.
-4. Create a pull request back to the master branch of the origin repo.
-
-# Questions
-
-1. Create a function that takes an unlimited amount of number parameters, and returns an array of all the permutations possible. For example, `myFunction(4, 7, 2) {}` should return `[472, 427, 724, 742, 247, 274]`.
-
-2. Create a function that can find the Nth smallest number in an array. The array can be very very big, so you are not allowed using the `Array.sort()` method. Try to build a function that would perform fast. Also, explain why using `Array.sort()` isn't a good idea when sorting large arrays.
+Response about `Array.sort()`: In this context, using V8 with Node, there are several algorithms used by `sort()` depending on number of elements in the array.  While the number of element is variable, we cannot make sure that's the optimal solution *performance-wise*.
