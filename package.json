@@ -1,0 +1,17 @@
+{
+  "name": "javascript-test",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sahidulnet/javascript-test.git"
+  },
+  "author": "Sahidul Islam",
+  "homepage": "https://github.com/sahidulnet/javascript-test#readme",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^4.0.1"
+  }
+}
