@@ -32,5 +32,5 @@ Sorting a large array could lead to issues with performance and memory. Differen
 
 We can extend this scenario further by distributing the array into multiple large files and need to find the solution with a limited memory. For this case, sorting should be the least preferred way to find the solution, as distributed sorting heavily depends on IO operations could lead to extremely poor performance.
 
-N = Nth value
+N = Nth value <br />
 n = Length of the array
