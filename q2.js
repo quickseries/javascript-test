@@ -1,3 +1,17 @@
+/** 
+ *  Its not a good idea to use the native JavaScript sort function "Array.sort()" because of its poor performance
+ *  with large data. According to the online JavaScript community this is most likely related to the fact that 
+ *  the native JavaScript srot creates internal arrays of pairs and sorts those arrays. The sorting
+ *  of those arrays can result in further recursive calls to "GetThirdIndex()" as well as the checking for "holes"
+ *  in the array and this is not very efficient. So in short the native JavaScript sort function is not designed 
+ *  to sort big data.
+ * 
+ *  In order to get better performance its a good practice to use other sorting algorithims such as quicksort,
+ *  merge sort, select sort, bubble sort or selection sort.
+ *  
+ *  In this implemention i've decided to use the quicksort algorithm which promise "O(n log(n))" in the best case,
+ *  "O(n log(n))" on average and "O(n^2)" in the worst case.
+*/
 (() => {
     'use strict';
 
