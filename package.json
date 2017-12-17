@@ -1,0 +1,22 @@
+{
+  "name": "javascript-test",
+  "version": "1.0.0",
+  "description": "NO PLAGIARISM WILL BE TOLERATED. We run every test through our plagiarism tool and you will be removed from the list of potential candidates if we find that you have copy pasted code from the web.",
+  "main": "permutations.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Marie000/javascript-test.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Marie000/javascript-test/issues"
+  },
+  "homepage": "https://github.com/Marie000/javascript-test#readme",
+  "dependencies": {
+    "random-array": "0.0.2"
+  }
+}
