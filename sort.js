@@ -18,6 +18,7 @@ array.sort().
 var returnNthElement = function(array, n) {
   var resultArray = [];
 
+  // get the index at which we should insert each item in the result array
   var getIndex = function(array, item) {
     var tempIndex = 0;
     var recurse = function(in_array, item) {
@@ -56,13 +57,14 @@ var returnNthElement = function(array, n) {
   return resultArray[n-1];
 };
 
+// for performance testing purposes
 var standardSort = function(array, n) {
   return array.sort(function(a,b) {
     return a - b;
   })[n-1];
 };
 
-// run a npm install before commenting out
+// run a npm install before using those lines
 // var random = require('random-array');
 // var list = random(0,50).oned(100000);
 var list = [4,2,4,1,7,8,6,2,4,7,9,3,3,1,8,4,2,3,9,0,7,1,2,6,3,8,2,3,6,8,9,10,11,5,15,
@@ -70,10 +72,10 @@ var list = [4,2,4,1,7,8,6,2,4,7,9,3,3,1,8,4,2,3,9,0,7,1,2,6,3,8,2,3,6,8,9,10,11,
 9,3,6,8,12,2,7,15,1,7];
 
 
-console.time('sort');
-standardSort(list, 18);
-console.timeEnd('sort');
+console.time('standard sort');
+standardSort(list, 18); // when using the random-array package, increase n accordingly (18000 is what I used)
+console.timeEnd('standard sort');
 
-console.time('mine');
-returnNthElement(list, 18);
-console.timeEnd('mine');
+console.time('my sort');
+returnNthElement(list, 18); // increase n here as well
+console.timeEnd('my sort');
