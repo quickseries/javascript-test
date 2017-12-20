@@ -86,7 +86,7 @@ function getTestArray(size=10000000) {
 /**
  * _generateRandom generates a random integer from 0 to the specified maximum.
  * @param max maximum random number value, default value is <code>100</code>
- * @returns {number} the randome number between 0 and max.
+ * @returns {number} the random number between 0 and max.
  * @private
  */
 function _generateRandom(max=100) {

@@ -21,7 +21,7 @@ console.log('*** Question 2 : get nth smallest element of a big array -- DEMO ST
 // *** Setup test data... ***
 const arraySize = 10000000;
 console.time(`Generating test array of ${arraySize} items...`);
-let qsTestArray = q02.getTestArray(arraySize);
+const qsTestArray = q02.getTestArray(arraySize);
 
 // *** ...perform the custom sort... ***
 console.time("Super duper quickSort (fast) ");
