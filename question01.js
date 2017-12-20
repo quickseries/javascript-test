@@ -12,6 +12,13 @@
 // -------------------------------------------------------------------------------------
 
 /**
+ * Takes arguments and through a recursive backtrack strategy, prints all
+ * of the possible permutations. For example, with an input value of
+ * <code>[1, 2, 3]</code>, the following values would be printed
+ * to the console, each on separate lines :
+ *
+ * 123, 132, 213, 231, 321, 312
+ *
  * getPermutations is the public-facing wrapper of _recursPermutations
  * @param arguments assumed to be a valid array of integers.
  * @see _recursPermutations private recursive helper function.
