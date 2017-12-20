@@ -3,7 +3,7 @@ const q02 = require('./question02');
 
 // example :
 console.log('*** Question 1 : get all permutations of an integer array -- DEMO START ***');
-q01.getPermutations(1, 2, 3, 4, 5);
+q01.getPermutations(1, 2, 3);
 console.log('--------------------------------------------------------------------------------------');
 
 // -------------------------------------------------------------------------------------
@@ -28,10 +28,13 @@ console.time("Super duper quickSort (fast) ");
 q02.quickSort(qsTestArray, 0, qsTestArray.length - 1);
 console.timeEnd("Super duper quickSort (fast) ");
 
-// *** ...find the nth item... ***
+// *** ...find the nth smallest non-unique value. ***
 const n = 15;
 console.log(`least element of order ${n} is ${qsTestArray[n - 1]}`);
 console.log(`A sample or the first ${n} elements: ${qsTestArray.slice(0, n)}`);
+
+// NOTE: for the nth smallest unique value (not clear to me), we would have to exclude the
+// duplicatesvalues. If this is the case, I can update the PR with that solution.
 
 console.log('--------------------------------------------------------------------------------------');
 
