@@ -5,5 +5,5 @@ const output1 = permutations(7, 3, 4);
 console.log(output1);
 
 
-const output2 = nthSmallest([7, 3, 4, 11], 2);
+const output2 = nthSmallest([7, 3, 4, 11], 3);
 console.log(output2);
