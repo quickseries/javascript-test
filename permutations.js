@@ -24,6 +24,6 @@ const permutationsOfArray = (arr) => {
     }
 
     return output;
-}
+};
 
 module.exports = permutations;
