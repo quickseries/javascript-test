@@ -2,7 +2,8 @@
     notes:
     1- There's generally no best algorithm for all cases, particularly in the case of sorting, and it would depend
     on factors like the size of dataset (large), type of elements (numbers), the data structure of the dataset (array),
-    wheather or not the hardware is multicore to benefit from parallel computing, etc.
+    whether or not the items are already almost sorted, wheather or not the hardware is multicore to benefit
+    from parallel computing, etc.
     2- Array.sort() is a function that has different implementations in each runtime environment, some of which
     might not be optimal for this certain usecase.
     3- Although QuickSort has a worst-case time complexity of O(n^n), it is unlikely to happen in practice.
