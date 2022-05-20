@@ -1,0 +1,29 @@
+{
+  "name": "javascript-test",
+  "version": "1.0.0",
+  "description": "NO PLAGIARISM WILL BE TOLERATED. We run every test through our plagiarism tool and you will be removed from the list of potential candidates if we find that you have copy pasted code from the web.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phil714/javascript-test.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/phil714/javascript-test/issues"
+  },
+  "homepage": "https://github.com/phil714/javascript-test#readme",
+  "dependencies": {
+    "@types/jest": "^27.5.1",
+    "jest": "^28.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.10",
+    "@babel/preset-env": "^7.17.10",
+    "@babel/preset-typescript": "^7.16.7",
+    "babel-jest": "^28.1.0"
+  }
+}
